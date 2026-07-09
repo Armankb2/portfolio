@@ -1,296 +1,193 @@
 // ============================================================
-// portfolioData.js — Centralized configuration for Md Yusuf's Portfolio
-// All external links, personal info, and content in one place.
-// Update this file to change any content across the entire site.
+// portfolioData.js — Centralized configuration for Arman KB's Portfolio
 // ============================================================
 
 export const personalInfo = {
-  name: "Md Yusuf",
-  firstName: "Md Yusuf",
-  brandName: "Md Yusuf",
-  title: "Full Stack & Java Developer",
-  location: "Bhopal, India",
-  phone: "+91 99396-08743",
+  name: "ARMAN KB",
+  firstName: "Arman",
+  brandName: "ARMAN KB",
+  title: "Backend & AI Systems Engineer",
+  location: "Bangalore, India",
+  phone: "Available on request",
   emails: {
-    primary: "mdyusufcse096@iesuniversity.ac.in",
-    secondary: "yusuf.rgpv@gmail.com",
+    primary: "armankbarmankb04@gmail.com",
+    secondary: "armankbarmankb04@gmail.com",
   },
   summary:
-    "Aspiring software engineer and motivated B.Tech Computer Science student with solid skills in Java, Spring Boot, React, and Python. Passionate about building scalable full-stack applications with clean architecture and modern tech stacks.",
-  resumeUrl: "/Md_Yusuf_Resume_2026.pdf",
+    "Computer Science Engineering undergraduate passionate about building scalable backend systems, AI-powered applications, distributed systems, semantic search engines, database technologies, DevSecOps and cloud-native applications.",
+  resumeUrl: "https://drive.google.com/file/d/1I8Z5OxtpyPM8koxHRYivBKT4mhhm6fm3/view?usp=share_link",
 };
 
 export const socialLinks = {
-  github: "https://github.com/mdyusuf0",
-  linkedin: "https://linkedin.com/in/mdyusuf0",
-  instagram: "https://instagram.com/heyyusuffff",
+  github: "https://github.com/Armankb2",
+  linkedin: "https://www.linkedin.com/in/arman-kb-b53206262/",
+  email: "mailto:armankbarmankb04@gmail.com",
+  portfolio: "https://placement-syndicate-mini.pages.dev/",
 };
 
 export const heroContent = {
-  greeting: "Hi, I'm Md Yusuf",
-  titleHighlight: "Full Stack & Java Developer",
+  greeting: "Hi, I'm Arman KB",
+  titleHighlight: "Backend & AI Systems Engineer",
   subtitle:
-    "I build fast, scalable applications using Java, Spring Boot, MERN Stack, and Python.",
-  ctaPrimary: { text: "View My Work", href: "#projects" },
-  ctaSecondary: {
-    text: "Contact Me",
-    href: "mailto:mdyusufcse096@iesuniversity.ac.in?subject=Hiring Inquiry – Portfolio&body=Hello Md Yusuf,%0D%0A%0D%0AI came across your portfolio and would like to discuss an opportunity with you.%0D%0A%0D%0ALooking forward to hearing from you.%0D%0ABest Regards,",
-  },
-  ctaResume: { text: "Download Resume", href: "/Md_Yusuf_Resume_2026.pdf" },
+    "I build highly scalable distributed systems, AI-powered applications, and robust backend architectures.",
+  ctaPrimary: { text: "View Projects", href: "#projects" },
+  ctaSecondary: { text: "Contact Me", href: "#contact" },
+  ctaResume: { text: "Download Resume", href: "https://drive.google.com/file/d/1I8Z5OxtpyPM8koxHRYivBKT4mhhm6fm3/view?usp=share_link" },
 };
 
 export const aboutContent = {
-  heading: "Hello!",
-  bio: `Hi, my name is <span class="text-black text-xl font-black mx-1 tracking-wide uppercase">Md Yusuf</span>, an aspiring software engineer based in Bhopal, India, dedicated to crafting clean, functional, and highly scalable full-stack applications.`,
-  techStack: ["Java", "Spring Boot", "MERN Stack"],
+  heading: "About Me",
+  bio: `I am <span class="text-black text-xl font-black mx-1 tracking-wide uppercase">Arman KB</span>, a Computer Science Engineering student at M S Ramaiah Institute of Technology. I am deeply passionate about <strong>Backend Engineering</strong>, <strong>Java</strong>, and <strong>Spring Boot</strong>. I thrive on architecting distributed systems and building high-performance database engines. Beyond traditional backend development, I specialize in <strong>AI Systems</strong> and <strong>Semantic Search</strong>, constantly exploring ways to integrate intelligent solutions into robust applications. My drive for problem-solving pushes me to embrace continuous learning and adhere to the highest standards of software engineering.`,
+  techStack: ["Java", "Spring Boot", "AI Systems", "Distributed Systems"],
 };
 
 export const skillsContent = {
-  badge: "My Process",
-  heading: "Here's how I turn ideas into real-world applications",
+  badge: "My Expertise",
+  heading: "Architecting Scalable Backend Solutions",
   description:
-    "I follow a structured, creative, and highly technical approach to turn ideas into robust full-stack applications.",
+    "From distributed databases to AI-driven search engines, I focus on performance, security, and scalability.",
   cards: [
     {
       number: "01",
-      title: "Research",
-      text: "I start by understanding goals, user requirements, and technical constraints to lay a rock-solid foundation for the project.",
+      title: "Backend Engineering",
+      text: "Designing robust, highly available REST APIs and microservices using Java, Spring Boot, and FastAPI.",
     },
     {
       number: "02",
-      title: "Design",
-      text: "Crafting clean architecture, intuitive interfaces, and pixel-perfect wireframes that guarantee an engaging and accessible user experience.",
+      title: "AI & Semantic Search",
+      text: "Building RAG systems, embedding storage, and hybrid search solutions using Vector Databases and LLMs.",
     },
     {
       number: "03",
-      title: "Develop",
-      text: "Building scalable backends and responsive frontends using modern tech stacks and best practices.",
+      title: "Database Systems",
+      text: "Developing custom storage engines and optimizing complex queries for PostgreSQL and MongoDB.",
     },
     {
       number: "04",
-      title: "Deploy",
-      text: "Rigorous testing, performance optimization, and seamless deployment to cloud infrastructure, followed by ongoing support.",
+      title: "DevSecOps",
+      text: "Implementing secure CI/CD pipelines, containerization with Docker, and monitoring with Prometheus & Grafana.",
     },
   ],
-  endText: "Ready to ship!",
+  endText: "Built for scale.",
 };
 
-// Brand New Technical Skills Data
 export const technicalSkills = {
   categories: [
     {
       title: "Programming Languages",
       skills: [
-        { name: "Java", level: 90 },
+        { name: "Java", level: 95 },
+        { name: "Python", level: 90 },
+        { name: "SQL", level: 90 },
         { name: "C++", level: 85 },
-        { name: "Python", level: 75 }
+        { name: "C", level: 85 },
       ]
     },
     {
-      title: "Full Stack",
+      title: "Backend Frameworks",
       skills: [
-        { name: "MERN Stack", level: 90 },
-        { name: "HTML", level: 95 },
-        { name: "CSS", level: 90 },
-        { name: "JavaScript", level: 92 }
-      ]
-    },
-    {
-      title: "Backend",
-      skills: [
-        { name: "Spring Boot", level: 88 },
-        { name: "FastAPI", level: 75 },
-        { name: "REST APIs", level: 90 }
+        { name: "Spring Boot", level: 95 },
+        { name: "Spring Security", level: 90 },
+        { name: "FastAPI", level: 85 },
+        { name: "Flask", level: 80 },
+        { name: "REST APIs", level: 95 },
+        { name: "Microservices", level: 85 }
       ]
     },
     {
       title: "Databases",
       skills: [
-        { name: "MongoDB", level: 88 },
+        { name: "PostgreSQL", level: 90 },
+        { name: "MongoDB", level: 85 },
         { name: "MySQL", level: 85 },
-        { name: "Firebase", level: 80 }
+        { name: "Vector Databases", level: 85 }
       ]
     },
     {
-      title: "Tools & Automation",
+      title: "DevSecOps",
       skills: [
-        { name: "Git & GitHub", level: 90 },
-        { name: "VS Code", level: 95 },
-        { name: "Postman", level: 88 },
-        { name: "n8n", level: 82 },
-        { name: "MongoDB Compass", level: 85 },
-        { name: "Antigravity", level: 80 },
-        { name: "Codex", level: 75 }
+        { name: "Docker", level: 90 },
+        { name: "GitHub Actions", level: 85 },
+        { name: "Git", level: 90 },
+        { name: "SonarQube", level: 80 },
+        { name: "Trivy", level: 80 },
+        { name: "Prometheus & Grafana", level: 75 }
       ]
     },
     {
-      title: "Computer Science Concepts",
+      title: "Frontend",
       skills: [
-        { name: "Data Structures", level: 88 },
-        { name: "Algorithms", level: 85 },
-        { name: "DBMS", level: 86 },
-        { name: "OOP", level: 90 },
-        { name: "Software Engineering", level: 84 }
+        { name: "React", level: 80 },
+        { name: "HTML/CSS", level: 85 },
+        { name: "Tailwind CSS", level: 80 }
       ]
     }
   ]
 };
-
-// Brand New Content Creation Data
-export const contentCreation = {
-  badge: "Cinematic Content",
-  heading: "Creative Direction & Cinematic Edits",
-  description: "Beyond coding, I craft visual stories with premium editing, color grading, and creative pacing.",
-  categories: [
-    {
-      title: "Cinematic Reels",
-      description: "Visual stories crafted with cinematic lighting, premium color grading, and high-impact sound design.",
-      stats: "50+ Reels Created",
-      icon: "🎥"
-    },
-    {
-      title: "Travel Videos",
-      description: "Immersive travel vlogs and aesthetic edits capturing cultures, landscapes, and visual rhythms.",
-      stats: "15+ Countries/Cities",
-      icon: "✈️"
-    },
-    {
-      title: "Educational Reels",
-      description: "Fast-paced tech tutorials and educational content designed to simplify coding and software engineering.",
-      stats: "100k+ Views",
-      icon: "🧠"
-    },
-    {
-      title: "My Own Creative Edits",
-      description: "Experimental transitions, 3D overlays, and trendsetting visual effects that push creative bounds.",
-      stats: "Personal Projects",
-      icon: "⚡"
-    }
-  ]
-};
-
-// Brand New Leadership Data
-export const leadershipList = [
-  {
-    title: "IEEE Madhya Pradesh Section (Social Media Team)",
-    description: "Managed and coordinated digital content, driving audience engagement and designing interactive visual campaigns for tech events.",
-    role: "Social Media Coordinator",
-    badge: "Volunteer"
-  },
-  {
-    title: "Team Coordinator – Go-Kart International Racing 2K25",
-    description: "Led multi-disciplinary teams in project management, budget control, and logistics coordination for a high-profile international racing event.",
-    role: "Team Coordinator",
-    badge: "Leadership"
-  },
-  {
-    title: "5-Day MOE IDE Bootcamp, Roorkee",
-    description: "Participated in an intensive Innovation, Design, and Entrepreneurship Bootcamp organized by the Ministry of Education at IIT Roorkee.",
-    role: "Bootcamp Graduate",
-    badge: "Innovation"
-  },
-  {
-    title: "Hosted INFORIA Tech Summit Hackathon",
-    description: "Organized and hosted the flagship hackathon, managing registrations, mentoring participant teams, and coordinating judge evaluations.",
-    role: "Hackathon Organizer",
-    badge: "Co-Curricular"
-  },
-  {
-    title: "Event Coordinator & Anchoring – INFORIA 2K25",
-    description: "Coordinated technical events and served as the main stage anchor, speaking in front of large crowds and managing the summit flow.",
-    role: "Stage Anchor & Coordinator",
-    badge: "Public Speaking"
-  }
-];
-
-// Brand New Internships Data
-export const internshipsList = [
-  {
-    organization: "Netlink, Bhopal",
-    role: "Data Analytics & BI Tools Intern",
-    duration: "June 2025 - August 2025",
-    skills: ["Data Analytics", "Business Intelligence", "Dashboard Design", "Data Modeling"],
-    tech: ["Lumenore", "MySQL", "Excel", "BI Tools"]
-  },
-  {
-    organization: "Canva",
-    role: "Visual Content Creator & Designer",
-    duration: "May 2024 - June 2024",
-    skills: ["Visual Designing", "Poster Design", "Team Branding", "Asset Creation"],
-    tech: ["Canva Pro", "Figma", "Canva Design Suite"]
-  },
-  {
-    organization: "CollegeTips.in",
-    role: "Web Development Intern",
-    duration: "1 Month (Offline)",
-    skills: ["Frontend Development", "Responsive Layouts", "API Testing", "Web Performance"],
-    tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"]
-  }
-];
-
-// Brand New Soft Skills Data
-export const softSkillsList = [
-  { name: "Leadership", icon: "👑", desc: "Guiding teams, managing tasks, and driving project completion with shared vision." },
-  { name: "Public Speaking", icon: "🎤", desc: "Confident stage presence, anchoring summits, and delivering articulate technical ideas." },
-  { name: "Team Collaboration", icon: "🤝", desc: "Collaborating across fields, building racing carts, and engineering code in sync." },
-  { name: "Communication", icon: "💬", desc: "Clear, concise, and structured interactions in both business and technical contexts." },
-  { name: "Problem Solving", icon: "🧩", desc: "Breaking down complex engineering tasks into clean, logical, and modular pieces." },
-  { name: "Adaptability", icon: "🌟", desc: "Quick to pick up new frameworks like FastAPI, Spring Boot, or automation tools like n8n." },
-  { name: "Creativity", icon: "🎨", desc: "Blending cinematic aesthetics with software structure to build premium experiences." },
-  { name: "Time Management", icon: "⏰", desc: "Balancing B.Tech studies, event hosting, and developing robust software platforms." }
-];
 
 export const projects = [
   {
-    id: "foodmesh",
+    id: "placement-syndicate",
     number: "01",
-    badge: "🚀 Flagship Project",
-    title: "FoodMesh",
+    badge: "Flagship Project",
+    title: "Placement Syndicate",
     description:
-      "FoodMesh — An enterprise-grade multi-tenant restaurant management and food ordering SaaS platform inspired by UrbanPiper. It enables restaurants to manage multiple outlets, menus, inventory, customers, staff, and orders through a scalable architecture with secure authentication, role-based access control, and real-time operations. Built with React, Next.js, NestJS, PostgreSQL, Redis, Kafka, Elasticsearch, Docker, Kubernetes, and AWS.",
+      "An AI-enabled placement preparation platform featuring Hybrid Semantic Search (BM25 + Sentence Transformers), automated Resume Analysis, Resume Builder, and Interview Preparation. Backed by 20+ secure REST APIs and monitored via Prometheus and Grafana.",
     techTags: [
+      "Spring Boot",
       "React",
-      "Next.js",
-      "NestJS",
+      "FastAPI",
+      "MongoDB",
       "PostgreSQL",
-      "Redis",
-      "Kafka",
-      "Elasticsearch",
       "Docker",
-      "Kubernetes",
-      "AWS",
+      "GitHub Actions",
+      "SonarQube",
+      "Trivy",
+      "Prometheus",
+      "Grafana"
     ],
     links: {
-      github: "https://github.com/ersamirsingh/UrbanPiper",
-      demo: null,
+      github: "https://github.com/Armankb2", // Placeholder if specific repo not available
+      demo: "https://placement-syndicate-mini.pages.dev/",
     },
     isFlagship: true,
   },
   {
-    id: "karigar",
+    id: "planning-agent",
     number: "02",
-    badge: null,
-    title: "Karigar",
+    badge: "AI Systems",
+    title: "Planning Agent",
     description:
-      "A platform connecting local skilled workers with customers, featuring real-time search, worker profiles, and booking management with full database integration.",
-    techTags: ["React", "Node.js", "MongoDB", "Express", "REST API"],
+      "An autonomous multi-agent planning system with a modular architecture. Features intelligent tool orchestration and extensible APIs to solve complex, multi-step tasks dynamically using Large Language Models.",
+    techTags: ["Python", "LLMs", "AI Agents", "Planning"],
     links: {
-      github: "https://github.com/mdyusuf0/Karigar",
-      frontendDemo: "https://karigar-frontend.onrender.com",
-      backendApi: "https://karigar-zny2.onrender.com",
+      github: "https://github.com/Armankb2/Planning-Agent",
     },
     isFlagship: false,
   },
   {
-    id: "sentiment-analysis",
+    id: "save-vector",
     number: "03",
-    badge: null,
-    title: "AI-Powered Sentiment Analysis",
+    badge: "Database Systems",
+    title: "Save Vector",
     description:
-      "A full-stack web application that analyzes citizen feedback using Artificial Intelligence to classify sentiments as positive, negative, or neutral. Features a responsive React frontend, a Node.js backend, MongoDB for data storage, and n8n automation for workflow orchestration — enabling real-time insights and efficient feedback management.",
-    techTags: ["React", "Node.js", "MongoDB", "n8n", "AI/ML", "REST API"],
+      "A lightweight, custom-built Vector Database focused on embedding storage and rapid semantic search. It utilizes Cosine Similarity Search to provide robust Retrieval-Augmented Generation (RAG) support for AI applications.",
+    techTags: ["Python", "Vector Database", "Semantic Search"],
     links: {
-      github: "#", // Update when available
+      github: "https://github.com/Armankb2/Save-vector",
+    },
+    isFlagship: false,
+  },
+  {
+    id: "bytemimicdb",
+    number: "04",
+    badge: "Core Engineering",
+    title: "ByteMimicDB",
+    description:
+      "A lightweight, custom Database Engine designed from scratch. It features a custom storage architecture, query execution pipeline, and full support for basic CRUD operations to demonstrate deep understanding of DBMS internals.",
+    techTags: ["Python", "Database Engine", "Storage"],
+    links: {
+      github: "https://github.com/Armankb2/ByteMimicDB",
     },
     isFlagship: false,
   },
@@ -299,61 +196,43 @@ export const projects = [
 export const certificates = {
   featured: [
     {
-      name: "Oracle Cloud Infrastructure 2025",
-      issuer: "Oracle",
-      icon: "☁️",
+      name: "Software Engineering Virtual Experience",
+      issuer: "JPMorgan Chase",
+      icon: null,
     },
     {
-      name: "Programming in Java (94%)",
-      issuer: "NPTEL",
-      icon: "☕",
-    },
-    {
-      name: "C Programming & Assembly Language",
-      issuer: "NPTEL",
-      icon: "⚙️",
-    },
-    {
-      name: "Technology Job Simulation",
-      issuer: "Deloitte",
-      icon: "💼",
-    },
-    {
-      name: "Career Edge – IT Primer",
-      issuer: "TCS iON",
-      icon: "🎓",
-    },
-    {
-      name: "Fundamentals of BI & Analytics",
-      issuer: "Lumenore",
-      icon: "📊",
-    },
+      name: "Software Engineering Virtual Experience",
+      issuer: "Walmart USA",
+      icon: null,
+    }
   ],
-  viewAllUrl:
-    "https://drive.google.com/file/d/1ObdGWtVSx8SsfR4AcbCySSd9LFXcAs9f/view?usp=sharing",
+  viewAllUrl: null,
 };
 
 export const education = {
-  degree: "B.Tech – Computer Science & Engineering",
-  institution: "IES College of Technology (RGPV)",
-  cgpa: "8.35",
-  graduation: "2027",
-  twelfth: "12th Science – 81%",
-  tenth: "10th CBSE – 70%",
+  degree: "B.E. Computer Science Engineering",
+  institution: "M S Ramaiah Institute of Technology",
+  cgpa: "7.84",
+  graduation: "2027"
 };
 
 export const footerContent = {
   taglines: [
-    "Software Engineering & Web Dev",
-    "Java · Spring Boot · React",
-    "Full Stack Applications",
+    "Backend Engineering & AI",
+    "Java · Spring Boot · Distributed Systems",
+    "Cloud Native Applications",
   ],
-  credential: "B.Tech CSE · CGPA 8.35",
-  copyright: `© ${new Date().getFullYear()} Md Yusuf | Built with React`,
+  credential: "M S Ramaiah Institute of Technology · CGPA 7.84",
+  copyright: `© ${new Date().getFullYear()} Arman KB | Engineered for Scale`,
 };
 
-// EmailJS Configuration
-// Will read directly from environment variables in Vite (starting with VITE_)
+export const softSkillsList = [
+  { name: "Problem Solving", icon: null, desc: "Breaking down complex engineering tasks into modular, scalable solutions." },
+  { name: "Continuous Learning", icon: null, desc: "Always exploring new database technologies, AI systems, and DevSecOps tools." },
+  { name: "System Design", icon: null, desc: "Architecting distributed systems and robust APIs capable of high throughput." },
+  { name: "Adaptability", icon: null, desc: "Quickly transitioning between backend frameworks and emerging AI frameworks." }
+];
+
 export const emailjsConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_EMAILJS_SERVICE_ID",
   templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_EMAILJS_TEMPLATE_ID",
