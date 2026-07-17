@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { heroContent, socialLinks } from '../data/portfolioData';
-import heroImage from '../assets/hero/arman-hero.jpeg';
+import heroImage from '../assets/hero/kb.png';
 
 const Hero = () => {
   useEffect(() => {

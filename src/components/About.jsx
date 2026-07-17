@@ -1,5 +1,5 @@
 import React from 'react';
-import stackImage from '../assets/hero/arman-hero.jpeg';
+import stackImage from '../assets/hero/kb.png';
 import { aboutContent } from '../data/portfolioData';
 
 // Tech stack SVG icons rendered inline for crisp rendering
