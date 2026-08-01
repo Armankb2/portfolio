@@ -222,7 +222,7 @@ export const footerContent = {
     "Java · Spring Boot · Distributed Systems",
     "Cloud Native Applications",
   ],
-  credential: "M S Ramaiah Institute of Technology · CGPA 7.84",
+  credential: "M S Ramaiah Institute of Technology · CGPA 8.10",
   copyright: `© ${new Date().getFullYear()} Arman KB | Engineered for Scale`,
 };
 
