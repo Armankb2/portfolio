@@ -32,7 +32,7 @@ export const heroContent = {
     "I'm a Computer Science Engineering student focused on backend engineering, AI-powered applications, and developer-focused technical solutions. I build scalable APIs, distributed systems, semantic search workflows, and automation tools.",
   ctaPrimary: { text: "View Projects", href: "#projects" },
   ctaSecondary: { text: "Contact Me", href: "#contact" },
-  ctaResume: { text: "Download Resume", href: "/kb1.pdf" },
+  ctaResume: { text: "View Resume", href: "/kb1.pdf" },
 };
 
 export const aboutContent = {

@@ -120,7 +120,7 @@ const Contact = () => {
                   type="text"
                   id="firstName"
                   name="first_name"
-                  placeholder="John"
+                  placeholder=""
                   required
                   className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-teal-500/50 transition-colors"
                 />
@@ -134,7 +134,7 @@ const Contact = () => {
                   type="text"
                   id="lastName"
                   name="last_name"
-                  placeholder="Doe"
+                  placeholder=""
                   className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-teal-500/50 transition-colors"
                 />
               </div>
@@ -148,7 +148,7 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="user_email"
-                placeholder="john@example.com"
+                placeholder=""
                 required
                 className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-teal-500/50 transition-colors"
               />
@@ -176,23 +176,22 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className={`w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
-                  status === 'sending'
+                className={`w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${status === 'sending'
                     ? 'bg-teal-600/50 text-white cursor-not-allowed'
                     : status === 'success'
-                    ? 'bg-green-600 text-white'
-                    : status === 'error'
-                    ? 'bg-red-600 text-white'
-                    : 'bg-teal-600 hover:bg-teal-500 text-white hover:shadow-[0_0_25px_rgba(20,184,166,0.3)]'
-                }`}
+                      ? 'bg-green-600 text-white'
+                      : status === 'error'
+                        ? 'bg-red-600 text-white'
+                        : 'bg-teal-600 hover:bg-teal-500 text-white hover:shadow-[0_0_25px_rgba(20,184,166,0.3)]'
+                  }`}
               >
                 {status === 'sending'
                   ? 'Sending...'
                   : status === 'success'
-                  ? 'Message Sent ✓'
-                  : status === 'error'
-                  ? 'Please fill required fields'
-                  : 'Send Message'}
+                    ? 'Message Sent ✓'
+                    : status === 'error'
+                      ? 'Please fill required fields'
+                      : 'Send Message'}
               </button>
             </div>
           </form>
