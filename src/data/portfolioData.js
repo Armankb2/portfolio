@@ -195,6 +195,7 @@ export const projects = [
     ],
     links: {
       github: "https://github.com/Armankb2/market_analysis.git",
+      demo: "https://marketpulse-app-seven.vercel.app",
     },
     category: "Data Engineering",
   },
