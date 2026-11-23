@@ -364,7 +364,7 @@ const DocumentationLab = () => {
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-teal-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        
+
         {/* Section Header */}
         <div className="mb-16 md:mb-20" data-aos="fade-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 mb-6">
@@ -389,11 +389,10 @@ const DocumentationLab = () => {
               <button
                 key={study.id}
                 onClick={() => setActiveTab(study.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
-                  isSelected
-                    ? 'bg-teal-500/15 text-teal-300 border border-teal-500/40 shadow-[0_0_20px_rgba(20,184,166,0.15)]'
-                    : 'bg-white/[0.02] text-white/50 border border-white/[0.06] hover:text-white/80 hover:bg-white/[0.04]'
-                }`}
+                className={`px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${isSelected
+                  ? 'bg-teal-500/15 text-teal-300 border border-teal-500/40 shadow-[0_0_20px_rgba(20,184,166,0.15)]'
+                  : 'bg-white/[0.02] text-white/50 border border-white/[0.06] hover:text-white/80 hover:bg-white/[0.04]'
+                  }`}
               >
                 <span className="font-mono text-[11px] opacity-70">{study.number}</span>
                 <span>{study.repoName}</span>
@@ -404,7 +403,7 @@ const DocumentationLab = () => {
 
         {/* Active Case Study Presentation */}
         <div className="space-y-10" key={activeStudy.id} data-aos="fade-up">
-          
+
           {/* A. Project Context Card */}
           <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 md:p-8">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
@@ -470,7 +469,7 @@ const DocumentationLab = () => {
 
           {/* B vs C: Original Excerpt vs Reader-Friendly Reconstruction */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
+
             {/* Left: Original Excerpt */}
             <div className="lg:col-span-5 bg-black/40 border border-white/[0.08] rounded-2xl p-6 flex flex-col justify-between h-full">
               <div>
@@ -507,9 +506,16 @@ const DocumentationLab = () => {
                     Reader-Friendly Reconstruction
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">
-                  Documentation Engineered
-                </span>
+                <a
+                  href="https://armankb2.github.io/save-vector-docs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                >
+                  <span className="text-[10px] font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20 cursor-pointer hover:bg-teal-500/20 transition-colors">
+                    Documentation Engineered(mkDocs)
+                  </span>
+                </a>
               </div>
 
               <h4 className="text-base md:text-lg font-bold text-white mb-2">
