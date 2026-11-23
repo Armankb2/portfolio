@@ -264,6 +264,89 @@ This repository provides a pure C11 implementation of the K‑Means clustering a
         reason: 'Clarified why a memory-bandwidth benchmark is included in a clustering repository: to establish empirical hardware upper bounds.'
       }
     ]
+  },
+  {
+    id: 'save-vector',
+    number: '05',
+    repoName: 'Save-vector',
+    repoUrl: 'https://github.com/Armankb2/Save-vector',
+    readmeUrl: 'https://github.com/Armankb2/Save-vector#readme',
+    title: 'Vector Storage & HNSW Search Architecture',
+    subtitle: 'From Binary Persistence to Approximate Nearest-Neighbour Retrieval',
+    domain: 'Database Systems & Information Retrieval',
+    complexity: 'HNSW Graph Indexing • Binary File Layouts • Candidate Beam Search',
+    techStack: ['Go', 'HNSW Graph Indexing', 'Protocol Buffers', 'Binary Persistence', 'Approximate Nearest Neighbours'],
+    context: {
+      summary: 'An experimental vector storage engine written in Go. It stores fixed-dimensional float32 vectors, maintains external-to-internal identifier mappings, and explores approximate nearest-neighbour retrieval using the Hierarchical Navigable Small World (HNSW) algorithm.',
+      challenge: 'Vector databases operate at the intersection of disk I/O serialization and in-memory spatial graph traversal. Documenting this engine requires untangling the dual-write persistence path (binary disk files) from the in-memory multi-layer graph topology, clarifying metric mechanics (unnormalized dot product vs true cosine similarity), and formulating practical heuristics for HNSW hyperparameter tuning.'
+    },
+    originalExcerpt: {
+      sourceLocation: 'README.md — Sections "Insertion Workflow" & "Search Workflow"',
+      markdown: `### Insertion Workflow
+1. Client calls InsertVector with external ID and float32 vector.
+2. Engine assigns an internal uint64 vector ID.
+3. Vector payload and dimensions appended to binary file (vector.db).
+4. External-to-internal ID mapping stored in index metadata (payload.db).
+5. HNSW.InsertVector assigns a top layer using geometric distribution floor(-ln(unif) * mL).
+6. Greedy search traverses from top layer down to insertion layer.
+7. Candidate neighbours selected and bidirectional edges established up to max connections M.
+8. Edge list pruned if degree exceeds M_max.
+
+### Search Workflow
+1. Client calls Search(queryVector, k).
+2. HNSW performs greedy search from entry point down to layer 1.
+3. At layer 0 (base layer), beam search explores neighbours using candidate min-heap bounded by efSearch.
+4. Cosine similarity (dot product) computed against candidate vectors.
+5. Top-k internal IDs and similarity scores returned to caller.`
+    },
+    reconstruction: {
+      title: 'Save Vector Engine Architecture: Binary Storage & HNSW Graph Indexing',
+      overview: 'Save Vector implements a two-tier database architecture decoupling durable binary vector persistence on disk from fast approximate nearest-neighbour (ANN) retrieval in memory. The system is detailed across six core engineering dimensions:',
+      sections: [
+        {
+          heading: '1. System Architecture',
+          text: 'Save Vector decomposes vector operations across specialized functional components, ensuring clear isolation of responsibilities:\n\n• Database Coordination Layer: Acts as the top-level API boundary, validating incoming client payloads, checking dimension compatibility, and coordinating writes between disk storage and memory graphs.\n• Index Management Subsystem: Oversees index lifecycle, managing layer configurations, dynamic parameter tuning, and persistence coordination.\n• Vector Storage Engine: Manages raw sequential binary files, handling low-overhead IEEE 754 float32 byte writes without intermediate serialization layers.\n• Metadata & Identifier Mapping Registry: Translates between arbitrary client-supplied external identifiers (strings or UUIDs) and sequential internal uint64 identifiers, maintaining fast bidirectional lookup indices.\n• HNSW Indexing Engine: Builds and traverses a multi-layer Hierarchical Navigable Small World proximity graph entirely in memory, facilitating logarithmic-time nearest-neighbor retrieval.'
+        },
+        {
+          heading: '2. Storage Architecture & File Formats',
+          text: 'The engine coordinates four dedicated binary files on disk to separate schema validation, raw vector storage, identity translation, and graph structures:\n\n• meta.db: Serializes collection metadata using Protocol Buffers (proto_models.CollectionMeta), storing expected vector dimensionality, creation timestamps, and distance metric declarations for schema validation.\n• vector.db: Raw append-only binary file storing raw float32 coordinates as contiguous IEEE 754 4-byte sequences. Vectors are addressed via deterministic byte offsets: offset = internal_id * dimension * 4 bytes.\n• payload.db: Key-value index maintaining the mapping between external string UUIDs and sequential internal uint64 IDs, alongside client-supplied document payloads.\n• hnsw.db: Compact serialized representation of the multi-layer HNSW graph structure, capturing node layer assignments, neighbor lists, and entry points for restart recovery.'
+        },
+        {
+          heading: '3. Vector Insertion Workflow',
+          text: 'Vector ingestion follows a deterministic multi-stage sequence, ensuring persistence prior to graph index integration:\n\n1. Dimension Verification: Compares input float32 slice length against the expected dimension registered in meta.db, rejecting mismatched vectors before allocation.\n2. Internal ID Assignment: Generates an internal sequential uint64 vector identifier used as the canonical reference across all internal components.\n3. Binary Append: Appends the raw float32 byte slice to vector.db at offset internal_id * dimension * 4 bytes and flushes file state.\n4. Identifier Mapping: Records the external-to-internal ID pair and associated payload into payload.db.\n5. Layer Sampling: Samples the node maximum layer l using geometric distribution: l = floor(-ln(unif) * mL), where unif in (0, 1] and mL = 1/ln(M).\n6. Upper-Layer Greedy Descent: Beginning at global entry point ep at maxLayer, routes greedily downward to layer l+1, hopping to the closest local neighbor.\n7. Base-Layer Neighbor Selection: For each layer from min(maxLayer, l) down to 0, runs a beam search to find efConstruction closest candidates, establishes bidirectional edges up to degree M, and prunes edges if degree exceeds M_max.'
+        },
+        {
+          heading: '4. HNSW Search Process',
+          text: 'Query processing retrieves the top-k nearest neighbors in sub-linear time through hierarchical graph traversal:\n\n1. Entry Point Initialization: Sets the current search position to the global entry point ep at the graph maximum layer maxLayer.\n2. Multi-Layer Greedy Traversal: From maxLayer down to Layer 1, navigates the sparse skip-list graph. At each layer, greedily steps to whichever adjacent neighbor maximizes similarity to the query vector until reaching a local minimum, which becomes the entry point for the next layer down.\n3. Base-Layer Candidate Exploration: At dense Layer 0, switches from greedy 1-hop routing to priority-queue beam search. Initializes a dynamic candidate min-heap and a nearest-neighbors tracking pool, bounded by efSearch.\n4. Similarity Scoring & Expansion: Evaluates unvisited neighbors against the query vector, expanding the closest candidates until all candidates closer than the furthest result are exhausted.\n5. Result Sorting & Top-k Extraction: Extracts the top-k internal vector IDs sorted by descending similarity and resolves them against payload.db to return external IDs and similarity scores.'
+        },
+        {
+          heading: '5. Algorithm Parameters & Operational Trade-offs',
+          text: 'The operational behavior of the HNSW index is governed by three primary hyperparameters:\n\n• M (Default: 16): Maximum number of bidirectional connections established per node on intermediate layers (Layer 0 permits 2*M). Larger M values improve graph connectivity and recall on complex clustered datasets, but increase memory footprint (8 bytes per edge pointer) and construction latency.\n• efConstruction (Default: 200): Size of the dynamic priority queue during index insertion. Higher values expand the exploration boundary during graph building, creating a higher-quality topology with better recall at the cost of slower ingestion throughput.\n• efSearch (Default: 50): Size of the dynamic candidate list during query execution. Setting efSearch >= k is mandatory; higher values allow the beam search to explore wider graph clusters, asymptotically approaching brute-force k-NN accuracy at the expense of query latency.'
+        },
+        {
+          heading: '6. Engineering Decisions and Limitations',
+          text: 'Production technical documentation requires transparently stating system trade-offs and structural constraints:\n\n• Decoupled Storage vs. Indexing: Separating disk persistence (vector.db) from graph indexing allows raw vectors to be streamed and rebuilt independently without locking graph structures, enabling future background re-indexing and compaction.\n• Approximate vs. Exhaustive Search: Exact k-NN requires scanning every vector in O(N * D) time, which degrades under millions of high-dimensional vectors. HNSW trades negligible recall margin (e.g. 95-99% recall) for sub-linear O(log N) query latency.\n• Metric Implementation Reality: The internal similarity function (cosineSim in hnsw.go) executes a direct dot product sum(a[i] * b[i]) without runtime magnitude normalization. Callers must supply unit-normalized vectors (L2 norm = 1.0) for results to reflect true cosine similarity.\n• Concurrency & Crash Boundaries: Vector disk persistence and graph insertion are executed sequentially without Write-Ahead Logging (WAL) or atomic multi-file commit guarantees. An abrupt crash between stages can leave unindexed records on disk.\n• In-Memory Working Set: The entire HNSW graph adjacency list and active vector node records reside in RAM. Working set size scales linearly with N * (dimension * 4 + M * 8) bytes, requiring dedicated host memory provisioning.'
+        }
+      ]
+    },
+    editorialDecisions: [
+      {
+        action: 'Separated Physical Storage from In-Memory Indexing',
+        reason: 'Original README conflated vector append operations with graph construction. The revision clearly divides persistent disk files (meta.db, vector.db, payload.db) from the in-memory HNSW graph traversal.'
+      },
+      {
+        action: 'Verified and Documented Metric Mechanics (Dot Product vs Cosine)',
+        reason: 'Inspected hnsw.go source code to discover that cosineSim implements raw dot product without vector normalization. Documented this operational prerequisite so developers know vectors must be L2-normalized.'
+      },
+      {
+        action: 'Framed HNSW Parameters with Operational Trade-off Guidelines',
+        reason: 'Transformed arbitrary constants (M=16, efConstruction=200, efSearch=50) into an actionable systems tuning guide balancing recall, memory footprint, and query latency.'
+      },
+      {
+        action: 'Documented Concurrency and Crash-Consistency Boundaries',
+        reason: 'Pointed out the absence of a Write-Ahead Log (WAL) across the dual-stage write path, providing transparent systems documentation suitable for Cohesity engineering standards.'
+      }
+    ]
   }
 ];
 

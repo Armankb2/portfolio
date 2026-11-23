@@ -218,10 +218,12 @@ export const projects = [
     badge: "Database Systems",
     title: "Save Vector",
     description:
-      "A Go-based vector storage and indexing project with structured models, indexing components and Protocol Buffer-generated types. Focuses on organizing vector data and supporting similarity-search workflows.",
-    problem: "High-performance vector operations require minimal serialization overhead, strongly typed vector schema definitions, and lightweight indexing models.",
-    architecture: "Engineered in Go utilizing Protocol Buffers for strict schema definitions and compact serialization. Implements internal vector representations and indexing foundations for similarity search.",
-    techTags: ["Go", "Vector Storage", "Indexing", "Protocol Buffers"],
+      "An experimental Go-based vector storage engine exploring persistent float32 vector storage and approximate nearest-neighbour retrieval using the HNSW graph algorithm.",
+    problem: "High-performance vector retrieval requires efficient disk persistence for float32 vectors paired with sub-linear approximate nearest-neighbour search structures.",
+    architecture: "Two-tier engine written in Go. Combines raw binary float32 file persistence and Protocol Buffer schemas with an in-memory Hierarchical Navigable Small World (HNSW) graph for multi-layer logarithmic similarity retrieval.",
+    techTags: [
+      "Go", "HNSW", "Vector Storage", "Approximate Nearest Neighbours", "Protocol Buffers", "Binary Persistence"
+    ],
     links: {
       github: "https://github.com/Armankb2/Save-vector.git",
     },
